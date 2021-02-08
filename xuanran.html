@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件、列表渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="app">
+    <div v-if="count > 0">
+        count > 0,count = {{count}}
+    </div>
+    <div v-else>
+        count = {{count}}
+    </div>
+    <div v-show="count == -1">v-show={{count}}</div>
+
+    <span v-for="item in numList">
+        <br/><br/>
+        {{item.name}}正在{{item.doing}}<br/>
+        <span v-if="item.name=='Tom' && item.doing == '吃屎'"
+              :class="['active','add','sub',{'another':item.doing != '吃屎'}]"
+              :style="shi">
+            Hedy正在看着Tom吃屎
+        </span>
+        <span v-else>
+            <span v-if="item.name!='Tom'">Tom吃的更起劲了</span>
+        </span>
+
+    </span>
+    <br/>
+    <!--{{msg}}-->
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello man',
+            another: 'another hello man',
+            count: 0,
+            shi: {
+                color:'red',
+                textShadow: '0 0 5px #232323'
+            },
+            numList: [{
+                name: 'Tom',
+                doing: '吃屎'
+            },{
+                name: 'Hedy',
+                doing: '看着Tom吃屎'
+            }]
+        }
+    });
+</script>
+</body>
+</html>

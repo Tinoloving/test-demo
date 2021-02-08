@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bg{
+            color: red;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div class="bg">
+    hello word<br/>
+    {{msg}}<br/>
+    {{msg1}}<br/>
+    {{count + 2}}<br/>
+    <div v-html="template">
+    </div>
+    <a v-bind:href="urlBaidu">度娘</a>
+    <a :href="urlBaidu">度娘</a>
+    <button type="button" v-on:click="add()">增加</button>
+    <button type="button" @click="add()">增加</button>
+</div>
+
+<script>
+    new Vue({
+        el:'.bg',
+        data: {
+            msg: 'hello vue!',
+            msg1: 'hi hi',
+            count: 5,
+            template: '<div>hello template</div>',
+            urlBaidu: 'https://www.baidu.com'
+        },
+        methods:{
+            add:function (){
+                this.count++;
+            }
+        }
+    })
+</script>
+</body>
+</html>
